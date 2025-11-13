@@ -146,6 +146,7 @@ fun LkContTheme (
 
     MaterialTheme(
         colorScheme = theme,
+        typography = Typography,
         content = content
     )
 }
