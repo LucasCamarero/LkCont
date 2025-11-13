@@ -1,51 +1,89 @@
 package dev.lucascamarero.lkcont
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import dev.lucascamarero.lkcont.theme.LkContTheme
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import lkcont.composeapp.generated.resources.Res
-import lkcont.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
 fun App() {
     LkContTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!",
-                    style = MaterialTheme.typography.titleLarge)
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
+
+        Scaffold(
+            // barra superior
+            topBar = { BarraSuperior() },
+
+            // floating action button
+            floatingActionButton = { FAB() }
+
+            // cuerpo central
+        ) { innerPadding ->
+
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .background(MaterialTheme.colorScheme.background),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                // definición de rutas de pantallas
+
             }
         }
+    }
+}
+
+// Barra superior
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BarraSuperior() {
+
+    TopAppBar(
+        colors = topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            titleContentColor = MaterialTheme.colorScheme.onPrimary,
+        ),
+        title = {
+            Text(
+                "Lk Cont",
+                style = MaterialTheme.typography.titleLarge
+            )
+        },
+
+    )
+}
+
+// Floating Action Button
+@Composable
+fun FAB() {
+    FloatingActionButton(
+        onClick = {
+            // Abrir CreateNewApp
+        },
+        containerColor = MaterialTheme.colorScheme.primary
+    ) {
+        Icon(
+            Icons.Filled.Add,
+            contentDescription = "Add",
+            tint = MaterialTheme.colorScheme.onPrimary,
+            modifier = Modifier.size(60.dp)
+        )
     }
 }
