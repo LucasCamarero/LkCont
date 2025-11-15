@@ -43,6 +43,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(compose.materialIconsExtended)
+            implementation("cafe.adriel.voyager:voyager-navigator:1.0.1") // versión reciente
+            implementation("cafe.adriel.voyager:voyager-koin:1.0.0") // opcional
 
         }
         commonTest.dependencies {

@@ -1,15 +1,9 @@
 package dev.lucascamarero.lkcont
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,34 +11,28 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.lucascamarero.lkcont.theme.LkContTheme
+import dev.lucascamarero.lkcont.viewmodels.AppsViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
+import cafe.adriel.voyager.navigator.Navigator
 
 @Composable
 @Preview
 fun App() {
     LkContTheme {
 
+        val appsViewModel: AppsViewModel = viewModel()
+
         Scaffold(
-            // barra superior
-            topBar = { BarraSuperior() },
-
-            // floating action button
-            floatingActionButton = { FAB() }
-
-            // cuerpo central
+            topBar = { BarraSuperior() }
         ) { innerPadding ->
-
-            Column(
-                modifier = Modifier
-                    .padding(innerPadding)
-                    .background(MaterialTheme.colorScheme.background),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
+            // Rellenamos toda la pantalla y aplicamos innerPadding
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
             ) {
-                // definición de rutas de pantallas
-
+                Navigator(screen = AppListScreen)
             }
         }
     }
@@ -65,25 +53,6 @@ fun BarraSuperior() {
                 "Lk Cont",
                 style = MaterialTheme.typography.titleLarge
             )
-        },
-
+        }
     )
-}
-
-// Floating Action Button
-@Composable
-fun FAB() {
-    FloatingActionButton(
-        onClick = {
-            // Abrir CreateNewApp
-        },
-        containerColor = MaterialTheme.colorScheme.primary
-    ) {
-        Icon(
-            Icons.Filled.Add,
-            contentDescription = "Add",
-            tint = MaterialTheme.colorScheme.onPrimary,
-            modifier = Modifier.size(60.dp)
-        )
-    }
 }

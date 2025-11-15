@@ -3,6 +3,6 @@ package dev.lucascamarero.lkcont.screens
 import androidx.compose.runtime.Composable
 
 @Composable
-fun CreateMasterPassword(onAppListClick: () -> Unit) {
+fun Loggin(onAppListClick: () -> Unit) {
 
 }
