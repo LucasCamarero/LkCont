@@ -29,7 +29,7 @@ val Typography: Typography @Composable get() = Typography(
     titleLarge = TextStyle(
         fontFamily = SpaceGrotesk,
         fontWeight = FontWeight.Normal,
-        fontSize = 30.sp,
+        fontSize = 34.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
@@ -37,7 +37,23 @@ val Typography: Typography @Composable get() = Typography(
     titleMedium = TextStyle(
         fontFamily = SpaceGrotesk,
         fontWeight = FontWeight.Normal,
-        fontSize = 24.sp,
+        fontSize = 30.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+
+    titleSmall = TextStyle(
+        fontFamily = SpaceGrotesk,
+        fontWeight = FontWeight.Normal,
+        fontSize = 26.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+
+    bodyLarge = TextStyle(
+        fontFamily = ElmsSans,
+        fontWeight = FontWeight.Normal,
+        fontSize = 22.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
@@ -45,7 +61,7 @@ val Typography: Typography @Composable get() = Typography(
     bodyMedium = TextStyle(
         fontFamily = ElmsSans,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
+        fontSize = 18.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
@@ -53,7 +69,7 @@ val Typography: Typography @Composable get() = Typography(
     bodySmall = TextStyle(
         fontFamily = ElmsSans,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp,
+        fontSize = 14.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     )
