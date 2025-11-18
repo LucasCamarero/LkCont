@@ -30,7 +30,6 @@ import dev.lucascamarero.lkcont.viewmodels.AppsViewModel
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.icons.filled.CopyAll
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -63,7 +62,8 @@ fun AppList(appsViewModel: AppsViewModel,
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Text("Apps",
-                    style = MaterialTheme.typography.bodyLarge)
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.primary)
             }
         }
 
@@ -130,7 +130,8 @@ fun CreateIconButton(funcionClick: () -> Unit) {
 
         Text(
             "Crear App",
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }
@@ -158,13 +159,19 @@ fun CreateCards(appsViewModel: AppsViewModel, funcionClick: () -> Unit) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ){
+                    // Enlaza a la app o página web de la aplicación
                     item {
-                        Text(
-                            text = "${app.name.uppercase()}",
-                            modifier = Modifier.padding(20.dp),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimary
-                        )
+                        Button(onClick = {
+
+                        },
+                            modifier = Modifier.padding(2.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.primary,
+                                contentColor = MaterialTheme.colorScheme.onPrimary
+                            )) {
+                            Text("${app.name.uppercase()}",
+                                style = MaterialTheme.typography.bodyMedium)
+                        }
                     }
 
                     item {

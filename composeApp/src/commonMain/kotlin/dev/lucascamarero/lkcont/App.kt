@@ -32,7 +32,8 @@ fun App() {
                 .fillMaxSize()
                 .padding(innerPadding)
             ) {
-                Navigator(screen = AppListScreen)
+                //Navigator(screen = AppListScreen)
+                Navigator(AppListScreen(appsViewModel))
             }
         }
     }
